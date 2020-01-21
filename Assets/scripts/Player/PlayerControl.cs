@@ -17,8 +17,10 @@ public class PlayerControl : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f)) {
-                StartCoroutine(ScaleMe(hit.transform));
-                Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
+                if (hit.transform.GetComponent<ISpace>() != null) {
+                    StartCoroutine(ScaleMe(hit.transform));
+                    Debug.Log("You selected the " + hit.transform.name);
+                }
             }
         }
     }
