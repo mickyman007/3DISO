@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Board {
@@ -21,5 +23,15 @@ public class Board {
 
     public void Add(ISpace space) {
         Spaces.Add(space);
+        space.OnSelection += SpaceSelected;
+    }
+
+    private void SpaceSelected(object sender, EventArgs e) {
+        //Spaces.Where(x => x.IsSelected && x != sender).ToList<ISpace>().ForEach(x => x.IsSelected = false);
+        foreach(var space in Spaces) {
+            if(space.IsSelected && space != (ISpace) sender) {
+                space.IsSelected = false;
+            }
+        }
     }
 }

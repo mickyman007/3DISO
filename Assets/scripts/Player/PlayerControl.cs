@@ -17,17 +17,11 @@ public class PlayerControl : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f)) {
-                if (hit.transform.GetComponent<ISpace>() != null) {
-                    StartCoroutine(ScaleMe(hit.transform));
-                    Debug.Log("You selected the " + hit.transform.name);
+                var space = hit.transform.GetComponent<ISpace>();
+                if (space != null) {
+                    space.IsSelected = true;
                 }
             }
         }
-    }
-
-    private IEnumerator ScaleMe(Transform objTr) {
-        objTr.localScale *= 1.2f;
-        yield return new WaitForSeconds(0.5f);
-        objTr.localScale /= 1.2f;
     }
 }
