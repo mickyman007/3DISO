@@ -7,6 +7,17 @@ public class Space : MonoBehaviour, ISpace {
     private bool isSelected;
     private bool isMoveable;
 
+    private void OnDrawGizmos() {
+        Gizmos.color = isSelected? Color.green : Color.red;
+
+        //Gizmos.DrawCube(
+        //    new Vector3(x, 1, y),
+        //    new Vector3(1, 1, 1));
+        Gizmos.DrawWireCube(
+            new Vector3(x, transform.position.y + 0.5f, y),
+            new Vector3(1, 1, 1));
+    }
+
     public int X { 
         get { return x; }
     }
@@ -24,13 +35,15 @@ public class Space : MonoBehaviour, ISpace {
     public bool IsSelected {
         get { return isSelected; }
         set { 
+            if(isSelected == value) {
+                return;
+            }
             isSelected = value;
             if (value) {
                 Select();
             } else {
                 UnSelect();
             }
-            
         }
     }
 

@@ -22,18 +22,6 @@ public class BoardSetter : MonoBehaviour {
         return null;
     }
 
-    private void OnDrawGizmos() {
-        Gizmos.color = new Color(1, 0, 0, 0.5f);
-
-        for (int i = 0; i < GridSizeX; i++) {
-            for (int j = 0; j < GridSizeY; j++) {
-                Gizmos.DrawCube(
-                    new Vector3(i, 1, j), 
-                    new Vector3(1, 1, 1));
-            }
-        }
-    }
-
     private void SetupBoard() {
         for(int x = 0; x < GridSizeX; x++) {
             for (int y = 0; y < GridSizeY; y++) {
