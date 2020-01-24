@@ -7,18 +7,6 @@ public class BoardSetter : MonoBehaviour {
     public Board Board;
     public GameObject EmptySpace;
 
-    public GameObject GetSpaceAtPosition(Vector3 position) {
-        Collider[] colliders = Physics.OverlapSphere(position, 1f);
-        if (colliders.Length > 1) {
-            foreach (var collider in colliders) {
-                var go = collider.gameObject;
-                if (go == gameObject) continue;
-                return gameObject;
-            }
-        }
-        return null;
-    }
-
     private void SetupBoard() {
         for(int x = 0; x < GridSizeX; x++) {
             for (int y = 0; y < GridSizeY; y++) {
