@@ -24,7 +24,7 @@ public class Space : MonoBehaviour, ISpace {
             if (value) {
                 Select();
             } else {
-                UnSelect();
+                Unselect();
             }
         }
     }
@@ -39,8 +39,9 @@ public class Space : MonoBehaviour, ISpace {
         OnSelection(this, new EventArgs());
     }
 
-    private void UnSelect() {
+    private void Unselect() {
         transform.localScale /= 1.2f;
+        Debug.Log("Unselected" + transform.name);
     }
 
     void OnDrawGizmos() {

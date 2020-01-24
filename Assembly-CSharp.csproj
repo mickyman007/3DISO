@@ -66,6 +66,7 @@
     <Compile Include="Assets\scripts\Board\Board.cs" />
     <Compile Include="Assets\scripts\Board\BoardSetter.cs" />
     <Compile Include="Assets\scripts\Board\BoardUtilities.cs" />
+    <Compile Include="Assets\scripts\Board\IPiece.cs" />
     <Compile Include="Assets\scripts\Board\Spaces\ISpace.cs" />
     <Compile Include="Assets\scripts\Board\Spaces\Space.cs" />
     <Compile Include="Assets\scripts\MoveSideways.cs" />

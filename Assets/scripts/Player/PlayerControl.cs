@@ -18,7 +18,7 @@ public class PlayerControl : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f)) {
                 if (hit.transform.TryGetComponent<ISpace>(out var space)) {
-                    space.IsSelected = true;
+                    space.IsSelected = !space.IsSelected;
                 }
             }
         }
