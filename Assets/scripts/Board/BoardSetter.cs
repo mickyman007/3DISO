@@ -42,18 +42,4 @@ public class BoardSetter : MonoBehaviour {
     void Update() {
         
     }
-
-    private void OnDrawGizmos() {
-        if (null != Board
-            && null != Board.SelectedSpace) {
-            Gizmos.color = Color.white;
-            Gizmos.DrawWireSphere(
-                BoardUtilities.CoordToWorld(
-                    Board.SelectedSpace.X,
-                    Board.SelectedSpace.Y
-                ),
-                0.5f
-            );
-        }
-    }
 }

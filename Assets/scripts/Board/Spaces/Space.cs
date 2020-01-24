@@ -4,14 +4,6 @@ using UnityEngine;
 public class Space : MonoBehaviour, ISpace {
     private bool isSelected;
 
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.yellow;
-
-        Gizmos.DrawWireCube(
-            new Vector3(X, transform.position.y + 0.5f, Y),
-            new Vector3(0.5f, 1, 0.5f));
-    }
-
     public int X { get; private set; }
 
     public int Y { get; private set; }
@@ -49,5 +41,13 @@ public class Space : MonoBehaviour, ISpace {
 
     private void UnSelect() {
         transform.localScale /= 1.2f;
+    }
+
+    void OnDrawGizmos() {
+        Gizmos.color = isSelected ? Color.green : Color.red;
+
+        Gizmos.DrawWireCube(
+            new Vector3(X, transform.position.y + 0.5f, Y),
+            new Vector3(0.5f, 1, 0.5f));
     }
 }
