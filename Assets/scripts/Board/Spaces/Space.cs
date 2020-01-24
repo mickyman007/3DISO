@@ -2,30 +2,23 @@
 using UnityEngine;
 
 public class Space : MonoBehaviour, ISpace {
-    private int x;
-    private int y;
     private bool isSelected;
-    private bool isMoveable;
 
     private void OnDrawGizmos() {
         Gizmos.color = Color.yellow;
 
         Gizmos.DrawWireCube(
-            new Vector3(x, transform.position.y + 0.5f, y),
+            new Vector3(X, transform.position.y + 0.5f, Y),
             new Vector3(0.5f, 1, 0.5f));
     }
 
-    public int X { 
-        get { return x; }
-    }
+    public int X { get; private set; }
 
-    public int Y {
-        get { return y; }
-    }
+    public int Y { get; private set; }
 
     public void Initialise(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.X = x;
+        this.Y = y;
         transform.name = typeof(Space).ToString() + "(" + x + ", " + y + ")";
     }
 
@@ -44,10 +37,7 @@ public class Space : MonoBehaviour, ISpace {
         }
     }
 
-    public bool IsMoveable { 
-        get { return isMoveable; }
-        set { isMoveable = value; }
-    }
+    public bool IsMoveable { get; set; }
 
     public event EventHandler OnSelection;
 

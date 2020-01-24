@@ -25,6 +25,7 @@ public class Board {
     }
 
     private void SpaceSelected(object sender, EventArgs e) {
+        selectedSpace = (ISpace)sender;
         Spaces.Where(x => x.IsSelected && x != sender).ToList<ISpace>().ForEach(x => x.IsSelected = false);
     }
 }
