@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BoardSetter : MonoBehaviour {
 
@@ -32,26 +29,16 @@ public class BoardSetter : MonoBehaviour {
     }
 
     private GameObject CreateSpace(int x, int y) {
-        var spaceGo = Instantiate(EmptySpace, CoordToWorld(x, y), Quaternion.Euler(90, 0, 0));
+        var spaceGo = Instantiate(EmptySpace, BoardUtilities.CoordToWorld(x, y), Quaternion.Euler(90, 0, 0));
         spaceGo.AddComponent<Space>().Initialise(x, y);
         return spaceGo;
     }
 
-    private Tuple<int, int> WorldToCoord(Vector3 position) {
-        return new Tuple<int, int>((int)position.x, (int)position.z);
-    }
-
-    private Vector3 CoordToWorld(int x, int y) {
-        return new Vector3(x, 0, y);
-    }
-
-    // Start is called before the first frame update
     void Start() {
         Board = new Board();
         SetupBoard();
     }
 
-    // Update is called once per frame
     void Update() {
         
     }

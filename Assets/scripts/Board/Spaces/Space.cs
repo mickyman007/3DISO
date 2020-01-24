@@ -8,14 +8,11 @@ public class Space : MonoBehaviour, ISpace {
     private bool isMoveable;
 
     private void OnDrawGizmos() {
-        Gizmos.color = isSelected? Color.green : Color.red;
+        Gizmos.color = Color.yellow;
 
-        //Gizmos.DrawCube(
-        //    new Vector3(x, 1, y),
-        //    new Vector3(1, 1, 1));
         Gizmos.DrawWireCube(
             new Vector3(x, transform.position.y + 0.5f, y),
-            new Vector3(1, 1, 1));
+            new Vector3(0.5f, 1, 0.5f));
     }
 
     public int X { 

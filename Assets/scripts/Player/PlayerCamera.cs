@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour {
 
-    public Camera camera;
+    public new Camera camera;
 
     public float CameraRotationSpeedY = 2f;
     public float CameraRotationSpeedX = 2f;
