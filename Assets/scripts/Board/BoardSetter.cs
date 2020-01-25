@@ -4,14 +4,16 @@ public class BoardSetter : MonoBehaviour {
 
     public int GridSizeX;
     public int GridSizeY;
-    public Board Board;
+    public IBoard Board;
     public GameObject EmptySpace;
 
     private void SetupBoard() {
+        Board = new Board(GridSizeX, GridSizeY);
+
         for(int x = 0; x < GridSizeX; x++) {
             for (int y = 0; y < GridSizeY; y++) {
                 var spaceGo = CreateSpace(x, y);
-                Board.Add(spaceGo.GetComponent<ISpace>());
+                Board.Set(spaceGo.GetComponent<ISpace>());
             }
         }
     }
@@ -23,7 +25,6 @@ public class BoardSetter : MonoBehaviour {
     }
 
     void Start() {
-        Board = new Board();
         SetupBoard();
     }
 

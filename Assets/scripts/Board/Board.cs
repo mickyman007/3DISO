@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
-public class Board {
+public class Board : IBoard {
     private ISpace selectedSpace;
 
-    public IList<ISpace> Spaces;
+    public ISpace[,] Spaces { get; private set; }
 
-    public Board() {
-        Spaces = new List<ISpace>();
+    public Board(int boardSizeX, int boardSizeY) {
+        Spaces = new ISpace[boardSizeX, boardSizeY];
     }
 
     public ISpace SelectedSpace { 
@@ -19,13 +17,15 @@ public class Board {
         }
     }
 
-    public void Add(ISpace space) {
-        Spaces.Add(space);
+    public void Set(ISpace space) {
+        Spaces[space.X, space.Y] = space;
         space.OnSelection += SpaceSelected;
     }
 
     private void SpaceSelected(object sender, EventArgs e) {
+        if(selectedSpace != null && selectedSpace != sender) {
+            selectedSpace.IsSelected = false;
+        }
         selectedSpace = (ISpace)sender;
-        Spaces.Where(x => x.IsSelected && x != sender).ToList<ISpace>().ForEach(x => x.IsSelected = false);
     }
 }
