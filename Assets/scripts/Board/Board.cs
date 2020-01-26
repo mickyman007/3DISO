@@ -27,5 +27,7 @@ public class Board : IBoard {
             selectedSpace.IsSelected = false;
         }
         selectedSpace = (ISpace)sender;
+
+        var adjacentSpaces = BoardUtilities.GetNeighbouringSpaces(this, selectedSpace, false);
     }
 }
