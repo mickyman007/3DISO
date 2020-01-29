@@ -1,26 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// Class for player camera movement and controls.
+/// </summary>
 public class PlayerCamera : MonoBehaviour {
-
-    public new Camera camera;
-
     public float CameraRotationSpeedY = 2f;
     public float CameraRotationSpeedX = 2f;
     public float CameraSmooth = 1f;
     public float CameraZoomSpeed = 3f;
-    public float CameraZoomMax = 15f;
+    public float CameraZoomMax = 30f;
     public float CameraZoomMin = 3f;
 
+    private new Camera camera;
     private Rigidbody rb;
 
+    /// <summary>
+    /// Called on startup.
+    /// </summary>
     void Start() {
         rb = gameObject.GetComponent<Rigidbody>();
         camera = gameObject.GetComponentInChildren<Camera>();
     }
 
-    void Update() {
+    /// <summary>
+    /// Called every frame.
+    /// </summary>
+    void FixedUpdate() {
         if (Input.GetAxis("Fire2") > 0) {
             RotateCamera();
         }
@@ -29,6 +34,9 @@ public class PlayerCamera : MonoBehaviour {
         ClampZoom();
     }
 
+    /// <summary>
+    /// Uses mouse movement to rotate player view.
+    /// </summary>
     private void RotateCamera() {
         float cameraMoveY = Input.GetAxis("Mouse X") * CameraRotationSpeedX;
         float cameraMoveX = Input.GetAxis("Mouse Y")* CameraRotationSpeedY;
@@ -36,6 +44,9 @@ public class PlayerCamera : MonoBehaviour {
         rb.AddTorque(-cameraMoveX, cameraMoveY, 0);
     }
 
+    /// <summary>
+    /// Changes camera fov based on mouse scroll wheel.
+    /// </summary>
     private void ZoomCamera() {
         var cameraZoom = -Input.GetAxis("Mouse ScrollWheel");
 
@@ -44,6 +55,9 @@ public class PlayerCamera : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Clamps the player view from moving outside of bounds.
+    /// </summary>
     private void ClampAngles() {
 
         var rotationX = transform.eulerAngles.x;
@@ -64,15 +78,10 @@ public class PlayerCamera : MonoBehaviour {
         transform.eulerAngles = rotationAngles;
     }
 
+    /// <summary>
+    /// Clamps the camera fov.
+    /// </summary>
     private void ClampZoom() {
-        //if (camera.transform.localPosition.y > CameraZoomMax
-        //    || camera.transform.localPosition.z > CameraZoomMax) {
-        //    camera.transform.localPosition = new Vector3(0, CameraZoomMax - 1, CameraZoomMax - 1);
-        //}
-
-        //if (camera.transform.localPosition.y < CameraZoomMin
-        //    || camera.transform.localPosition.z < CameraZoomMin) {
-        //    camera.transform.localPosition = new Vector3(0, CameraZoomMin + 1, CameraZoomMin + 1);
-        //}
+        camera.fieldOfView = Mathf.Clamp(camera.fieldOfView, CameraZoomMin, CameraZoomMax);
     }
 }
