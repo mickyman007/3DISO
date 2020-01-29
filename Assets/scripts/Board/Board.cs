@@ -28,6 +28,6 @@ public class Board : IBoard {
         }
         selectedSpace = (ISpace)sender;
 
-        var adjacentSpaces = BoardUtilities.GetNeighbouringSpaces(this, selectedSpace, false);
+        var adjacentSpaces = this.GetNeighbouringSpaces(selectedSpace, false);
     }
 }

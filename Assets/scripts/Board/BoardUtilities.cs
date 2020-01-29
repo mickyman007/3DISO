@@ -10,6 +10,10 @@ public static class BoardUtilities {
         return new Vector3(x, 0, y);
     }
 
+    public static Vector3 GetWorldCoords(this ISpace space) {
+        return new Vector3(space.X, 0, space.Y);
+    }
+
     public static ISpace GetSpaceAtPosition(Vector3 position) {
         Collider[] colliders = Physics.OverlapSphere(position, 1f);
         if (colliders.Length > 1) {
@@ -22,7 +26,7 @@ public static class BoardUtilities {
         return null;
     }
 
-    public static ISpace[] GetNeighbouringSpaces(IBoard board, ISpace targetSpace, bool includeDiagonal) {
+    public static ISpace[] GetNeighbouringSpaces(this IBoard board, ISpace targetSpace, bool includeDiagonal) {
         var k = includeDiagonal ? 8 : 4;
 
         ISpace[] neighbours = new ISpace[k];
