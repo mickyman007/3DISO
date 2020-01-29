@@ -37,14 +37,7 @@ public class PlayerCamera : MonoBehaviour {
     }
 
     private void ZoomCamera() {
-        var cameraZoom = Input.GetAxis("Mouse ScrollWheel");
-
-        //if (cameraZoom != 0) {
-        //    if (camera.transform.localPosition.y < CameraZoomMax
-        //        && camera.transform.localPosition.y > CameraZoomMin) {
-        //        camera.transform.localPosition += new Vector3(0, cameraZoom, -cameraZoom);
-        //    }
-        //}
+        var cameraZoom = -Input.GetAxis("Mouse ScrollWheel");
 
         if(cameraZoom != 0) {
             camera.fieldOfView += cameraZoom * CameraZoomSpeed;
