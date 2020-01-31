@@ -14,6 +14,9 @@ public class PlayerCamera : MonoBehaviour {
     private new Camera camera;
     private Rigidbody rb;
 
+    private float CameraZoomVelocity = 0;
+    private float CameraZoomTime = 0;
+
     /// <summary>
     /// Called on startup.
     /// </summary>
@@ -50,9 +53,23 @@ public class PlayerCamera : MonoBehaviour {
     private void ZoomCamera() {
         var cameraZoom = -Input.GetAxis("Mouse ScrollWheel");
 
-        if(cameraZoom != 0) {
-            camera.fieldOfView += cameraZoom * CameraZoomSpeed;
+        InertialZoom(cameraZoom);
+    }
+
+    /// <summary>
+    /// Changes the camera fov with inerta.
+    /// </summary>
+    /// <param name="movement">The amount of scroll movement.</param>
+    private void InertialZoom(float movement) {
+        if (movement == 0) {
+            CameraZoomTime -= (CameraZoomTime <= 0) ? 0 : 0.02f;
+            CameraZoomVelocity = Mathf.Lerp(0, CameraZoomVelocity, CameraZoomTime);
+        } else {
+            CameraZoomTime += (CameraZoomTime >= 1) ? 0 : 0.1f;
+            CameraZoomVelocity += movement * CameraZoomSpeed;
         }
+
+        camera.fieldOfView += CameraZoomVelocity;
     }
 
     /// <summary>
@@ -69,7 +86,7 @@ public class PlayerCamera : MonoBehaviour {
         }
 
         if (transform.eulerAngles.x < 320
-            && transform.eulerAngles.x < 200) {
+            && transform.eulerAngles.x > 200) {
             rotationX = 320;
         }
 
