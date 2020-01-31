@@ -7,7 +7,9 @@ public interface ISpace {
 
     bool IsSelected { get; set; }
 
-    bool IsMoveable { get; set; }
+    bool CanSelect { get; set; }
+
+    bool CanMove { get; set; }
 
     event EventHandler OnSelection;
 

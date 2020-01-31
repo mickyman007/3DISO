@@ -29,7 +29,9 @@ public class Space : MonoBehaviour, ISpace {
         }
     }
 
-    public bool IsMoveable { get; set; }
+    public bool CanSelect { get; set; }
+
+    public bool CanMove { get; set; }
 
     public event EventHandler OnSelection;
 
