@@ -13,5 +13,5 @@ public interface ISpace {
 
     event EventHandler OnSelection;
 
-    //SpaceType Type{ get; set; }
+    void Initialise(int x, int y);
 }

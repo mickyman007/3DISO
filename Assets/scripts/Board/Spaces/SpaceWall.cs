@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class Space : MonoBehaviour, ISpace {
+public class SpaceWall : MonoBehaviour, ISpace {
     private bool isSelected;
 
     public int X { get; private set; }
@@ -12,8 +12,8 @@ public class Space : MonoBehaviour, ISpace {
         this.X = x;
         this.Y = y;
         transform.name = typeof(Space).ToString() + "(" + x + ", " + y + ")";
-        CanSelect = true;
-        CanMove = true;
+        CanSelect = false;
+        CanMove = false;
     }
 
     public bool IsSelected {

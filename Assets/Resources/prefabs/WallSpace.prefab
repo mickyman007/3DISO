@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3956897243821996706}
   - component: {fileID: 4727155953260619204}
   - component: {fileID: 8744935034429264213}
+  - component: {fileID: 7715638534152449536}
   m_Layer: 0
   m_Name: WallSpace
   m_TagString: Untagged
@@ -93,3 +94,15 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &7715638534152449536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 398019459294881758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0cbb4dbd68a884aa113f9984e9c256, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -34,7 +34,7 @@ public class BoardSetter : MonoBehaviour {
     private GameObject CreateSpace(int x, int y) {
         var space = myBoard[x, y];
         var spaceGo = Instantiate(spaceDictionary[myBoard[x,y]], BoardUtilities.CoordToWorld(x, y), Quaternion.Euler(90, 0, 0));
-        spaceGo.AddComponent<Space>().Initialise(x, y);
+        spaceGo.GetComponent<ISpace>().Initialise(x, y);
         return spaceGo;
     }
 
