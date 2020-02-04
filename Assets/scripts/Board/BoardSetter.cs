@@ -4,11 +4,11 @@ using UnityEngine;
 public class BoardSetter : MonoBehaviour {
 
     public char[,] myBoard = {
-        { 'W', 'W', 'W', 'W', 'W'},
-        { 'W', 'S', 'S', 'S', 'W'},
-        { 'W', 'S', 'S', 'S', 'W'},
-        { 'W', 'S', 'S', 'S', 'W'},
-        { 'W', 'W', 'W', 'W', 'W'}
+        { 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'},
+        { 'W', 'S', 'S', 'S', 'S', 'S', 'S', 'W'},
+        { 'W', 'S', 'S', 'S', 'S', 'S', 'S', 'W'},
+        { 'W', 'S', 'S', 'S', 'S', 'S', 'S', 'W'},
+        { 'W', 'W', 'W', 'W', 'W', 'W', ' ', 'W'}
     };
 
     public int GridSizeX;
@@ -25,15 +25,20 @@ public class BoardSetter : MonoBehaviour {
 
         for(int x = 0; x < GridSizeX; x++) {
             for (int y = 0; y < GridSizeY; y++) {
-                var spaceGo = CreateSpace(x, y);
+                var spaceGo = SetSpace(x, y);
                 Board.Set(spaceGo.GetComponent<ISpace>());
             }
         }
     }
 
-    private GameObject CreateSpace(int x, int y) {
+    private GameObject SetSpace(int x, int y) {
         var space = myBoard[x, y];
-        var spaceGo = Instantiate(spaceDictionary[myBoard[x,y]], BoardUtilities.CoordToWorld(x, y), Quaternion.Euler(90, 0, 0));
+        GameObject spaceGo;
+        try {
+            spaceGo = Instantiate(spaceDictionary[myBoard[x, y]], BoardUtilities.CoordToWorld(x, y), Quaternion.Euler(90, 0, 0));
+        } catch {
+            spaceGo = Instantiate(EmptySpace, BoardUtilities.CoordToWorld(x, y), Quaternion.Euler(90, 0, 0));
+        }
         spaceGo.GetComponent<ISpace>().Initialise(x, y);
         return spaceGo;
     }
@@ -42,6 +47,7 @@ public class BoardSetter : MonoBehaviour {
         GridSizeX = myBoard.GetLength(0);
         GridSizeY = myBoard.GetLength(1);
 
+        EmptySpace = Resources.Load("prefabs/EmptySpace") as GameObject;
         Space = Resources.Load("prefabs/Space") as GameObject;
         Wall = Resources.Load("prefabs/WallSpace") as GameObject;
 
