@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class BoardSetter : MonoBehaviour {
 
-    public char[,] myBoard = {
+    public char[,] boardLayout = {
         { 'W', 'W', 'W', 'W', 'W', 'W', 'W', 'W'},
         { 'W', 'S', 'S', 'S', 'S', 'S', 'S', 'W'},
         { 'W', 'S', 'S', 'S', 'S', 'S', 'S', 'W'},
@@ -32,10 +32,9 @@ public class BoardSetter : MonoBehaviour {
     }
 
     private GameObject SetSpace(int x, int y) {
-        var space = myBoard[x, y];
         GameObject spaceGo;
         try {
-            spaceGo = Instantiate(spaceDictionary[myBoard[x, y]], BoardUtilities.CoordToWorld(x, y), Quaternion.Euler(90, 0, 0));
+            spaceGo = Instantiate(spaceDictionary[boardLayout[x, y]], BoardUtilities.CoordToWorld(x, y), Quaternion.Euler(90, 0, 0));
         } catch {
             spaceGo = Instantiate(EmptySpace, BoardUtilities.CoordToWorld(x, y), Quaternion.Euler(90, 0, 0));
         }
@@ -44,12 +43,16 @@ public class BoardSetter : MonoBehaviour {
     }
 
     void Start() {
-        GridSizeX = myBoard.GetLength(0);
-        GridSizeY = myBoard.GetLength(1);
+        boardLayout = BoardReader.GetSpaces("Assets/Resources/testBoard.txt");
+
+        GridSizeX = boardLayout.GetLength(0);
+        GridSizeY = boardLayout.GetLength(1);
 
         EmptySpace = Resources.Load("prefabs/EmptySpace") as GameObject;
         Space = Resources.Load("prefabs/Space") as GameObject;
         Wall = Resources.Load("prefabs/WallSpace") as GameObject;
+
+
 
         spaceDictionary = new Dictionary<char, GameObject> {
             { 'S', Space},
