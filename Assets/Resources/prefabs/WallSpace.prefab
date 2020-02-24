@@ -56,6 +56,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -103,6 +104,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 398019459294881758}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc0cbb4dbd68a884aa113f9984e9c256, type: 3}
+  m_Script: {fileID: 11500000, guid: 442fad6e66d462041b00d7eea1f16fbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

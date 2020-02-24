@@ -27,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4427122517502564114}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -44,15 +44,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4427122517502564114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7b0ccedaf3b01c41897b4510dfab632, type: 3}
+  m_Script: {fileID: 11500000, guid: b3ea7e4069564e945b3be461668175c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraRotationSpeedY: 14
-  CameraRotationSpeedX: 12
-  CameraSmooth: 100
-  CameraZoomSpeed: 5
-  CameraZoomMax: 30
-  CameraZoomMin: 3
 --- !u!54 &4427122517502564112
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -78,11 +72,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4427122517502564114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f9ff9c513834f547ba622639d1c3ef1, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b54ada121884a04f991746eb8ff103a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraMoveSpeedX: 50
-  CameraMoveSpeedY: 50
+  CameraMoveSpeedX: 20
+  CameraMoveSpeedY: 20
 --- !u!114 &4427122517502564109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,9 +86,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4427122517502564114}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8da88e37cebb8554c9d286073a4a56d3, type: 3}
+  m_Script: {fileID: 11500000, guid: d22cc74be062b9347809be00cef9ffba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CameraRotationSpeedY: 20
+  CameraRotationSpeedX: 20
+  CameraSmooth: 1
+  CameraZoomSpeed: 20
+  CameraZoomMax: 50
+  CameraZoomMin: 3
 --- !u!1 &4427122518425336173
 GameObject:
   m_ObjectHideFlags: 0
