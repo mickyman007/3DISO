@@ -11,7 +11,7 @@ public class Space : MonoBehaviour, ISpace {
     public void Initialise(int x, int y) {
         this.X = x;
         this.Y = y;
-        transform.name = typeof(Space).ToString() + "(" + x + ", " + y + ")";
+        transform.name = this.GetType().Name + "(" + x + ", " + y + ")";
         CanSelect = true;
         CanMove = true;
     }
