@@ -2,6 +2,7 @@
 
 public class Board : IBoard {
     private ISpace selectedSpace;
+    private IPiece selectedPiece;
 
     public ISpace[,] Spaces { get; private set; }
 
@@ -17,9 +18,21 @@ public class Board : IBoard {
         }
     }
 
+    public void Set(IPiece piece) {
+        piece.OnSelection += PieceSelected;
+    }
+
     public void Set(ISpace space) {
         Spaces[space.X, space.Y] = space;
         space.OnSelection += SpaceSelected;
+    }
+
+    private void PieceSelected(object sender, EventArgs e) {
+        selectedPiece = (IPiece)sender;
+
+        if (selectedSpace != null) {
+            selectedPiece.MoveTo(selectedSpace);
+        }
     }
 
     private void SpaceSelected(object sender, EventArgs e) {
@@ -27,7 +40,7 @@ public class Board : IBoard {
             selectedSpace.IsSelected = false;
         }
         selectedSpace = (ISpace)sender;
-
+        selectedPiece?.MoveTo(selectedSpace);
         var adjacentSpaces = this.GetNeighbouringSpaces(selectedSpace, false);
     }
 }

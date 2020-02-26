@@ -1,27 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class PlayerControl : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public class PlayerControl : MonoBehaviour {
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         if (Input.GetMouseButtonDown(0)) {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit, 100.0f)) {
-                if (hit.transform.TryGetComponent<ISpace>(out var space)) {
-                    if(space.CanSelect) {
-                        space.IsSelected = !space.IsSelected;
-                    }
+            Click();
+        }
+    }
+
+    private void Click() {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out RaycastHit hit, 100.0f)) {
+            if (hit.transform.TryGetComponent<ISpace>(out var space)) {
+                if (space.CanSelect) {
+                    space.IsSelected = !space.IsSelected;
+                    return;
                 }
+            }
+
+            if (hit.transform.TryGetComponent<IPiece>(out var piece)) {
+                piece.IsSelected = !piece.IsSelected;
+                return;
             }
         }
     }

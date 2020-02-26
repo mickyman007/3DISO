@@ -13,7 +13,7 @@ public class Space : MonoBehaviour, ISpace {
         this.Y = y;
         transform.name = this.GetType().Name + "(" + x + ", " + y + ")";
         CanSelect = true;
-        CanMove = true;
+        CanMoveTo = true;
     }
 
     public bool IsSelected {
@@ -33,7 +33,7 @@ public class Space : MonoBehaviour, ISpace {
 
     public bool CanSelect { get; set; }
 
-    public bool CanMove { get; set; }
+    public bool CanMoveTo { get; set; }
 
     public event EventHandler OnSelection;
 

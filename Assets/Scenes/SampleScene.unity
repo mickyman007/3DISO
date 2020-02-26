@@ -131,22 +131,7 @@ PrefabInstance:
     - target: {fileID: 4427122517502564109, guid: 4d441d06a5927fd41baafb31a1fe0eeb,
         type: 3}
       propertyPath: CameraRotationSpeedY
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4427122517502564109, guid: 4d441d06a5927fd41baafb31a1fe0eeb,
-        type: 3}
-      propertyPath: CameraRotationSpeedX
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4427122517502564109, guid: 4d441d06a5927fd41baafb31a1fe0eeb,
-        type: 3}
-      propertyPath: CameraZoomSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4427122517502564109, guid: 4d441d06a5927fd41baafb31a1fe0eeb,
-        type: 3}
-      propertyPath: CameraZoomMax
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 4427122517502564110, guid: 4d441d06a5927fd41baafb31a1fe0eeb,
         type: 3}
@@ -203,16 +188,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4427122517502564113, guid: 4d441d06a5927fd41baafb31a1fe0eeb,
-        type: 3}
-      propertyPath: CameraMoveSpeedX
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4427122517502564113, guid: 4d441d06a5927fd41baafb31a1fe0eeb,
-        type: 3}
-      propertyPath: CameraMoveSpeedY
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 4427122517502564114, guid: 4d441d06a5927fd41baafb31a1fe0eeb,
         type: 3}
       propertyPath: m_Name
@@ -254,6 +229,7 @@ MonoBehaviour:
   EmptySpace: {fileID: 0}
   Space: {fileID: 0}
   Wall: {fileID: 0}
+  GenericPiece: {fileID: 0}
 --- !u!4 &1055409872
 Transform:
   m_ObjectHideFlags: 0

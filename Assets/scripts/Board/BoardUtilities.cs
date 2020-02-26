@@ -26,6 +26,15 @@ public static class BoardUtilities {
         return null;
     }
 
+    public static bool MoveTo(this IPiece piece, ISpace destination) {
+        if(piece.CanMove && destination.CanMoveTo) {
+            piece.SpaceOccupied = destination;
+            return true;
+        }
+
+        return false;
+    }
+
     public static ISpace[] GetNeighbouringSpaces(this IBoard board, ISpace targetSpace, bool includeDiagonal) {
         var k = includeDiagonal ? 8 : 4;
 
