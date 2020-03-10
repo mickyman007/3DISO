@@ -71,6 +71,7 @@
     <Compile Include="Assets\scripts\Board\Spaces\Space.cs" />
     <Compile Include="Assets\scripts\Board\Spaces\SpaceWall.cs" />
     <Compile Include="Assets\scripts\Data\BoardReader.cs" />
+    <Compile Include="Assets\scripts\Effects.cs" />
     <Compile Include="Assets\scripts\MoveSideways.cs" />
     <Compile Include="Assets\scripts\Pieces\IPiece.cs" />
     <Compile Include="Assets\scripts\Pieces\Piece.cs" />

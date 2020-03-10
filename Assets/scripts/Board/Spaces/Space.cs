@@ -37,14 +37,20 @@ public class Space : MonoBehaviour, ISpace {
 
     public event EventHandler OnSelection;
 
+    public void OnMouseEnter() {
+    }
+
+    public void OnMouseExit() {
+    }
+
     private void Select() {
-        transform.localScale *= 1.2f;
+        transform.Expand(1.2f);
         Debug.Log("Selected" + transform.name);
         OnSelection(this, new EventArgs());
     }
 
     private void Unselect() {
-        transform.localScale /= 1.2f;
+        transform.Shrink(1.2f);
         Debug.Log("Unselected" + transform.name);
     }
 
