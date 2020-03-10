@@ -58,6 +58,7 @@ public class Piece : MonoBehaviour, IPiece {
     private void Unselect() {
         renderer.material.ToggleOutLine(originalMaterial);
         Debug.Log("Unselected" + transform.name);
+        OnSelection(this, new EventArgs());
     }
 
 }

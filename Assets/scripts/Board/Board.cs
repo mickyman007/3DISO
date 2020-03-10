@@ -28,6 +28,11 @@ public class Board : IBoard {
     }
 
     private void PieceSelected(object sender, EventArgs e) {
+        if(selectedPiece == (IPiece)sender) {
+            selectedPiece = null;
+            return;
+        }
+
         selectedPiece = (IPiece)sender;
 
         if (selectedSpace != null) {
