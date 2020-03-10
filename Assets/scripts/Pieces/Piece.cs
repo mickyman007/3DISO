@@ -4,6 +4,8 @@ using UnityEngine;
 public class Piece : MonoBehaviour, IPiece {
     private ISpace space;
     private bool isSelected;
+    private Renderer renderer;
+    private Material originalMaterial;
 
     public ISpace SpaceOccupied { 
         get { return space; }
@@ -35,6 +37,11 @@ public class Piece : MonoBehaviour, IPiece {
         CanMove = true;
     }
 
+    void Start() {
+        renderer = GetComponent<Renderer>();
+        originalMaterial = new Material(renderer.material);
+    }
+
     // Update is called once per frame
     void Update() {
         if (space != null) {
@@ -43,13 +50,13 @@ public class Piece : MonoBehaviour, IPiece {
     }
 
     private void Select() {
-        transform.Expand(1.2f);
+        renderer.material.ToggleOutLine(originalMaterial);
         Debug.Log("Selected" + transform.name);
         OnSelection(this, new EventArgs());
     }
 
     private void Unselect() {
-        transform.Shrink(1.2f);
+        renderer.material.ToggleOutLine(originalMaterial);
         Debug.Log("Unselected" + transform.name);
     }
 

@@ -71,13 +71,14 @@
     <Compile Include="Assets\scripts\Board\Spaces\Space.cs" />
     <Compile Include="Assets\scripts\Board\Spaces\SpaceWall.cs" />
     <Compile Include="Assets\scripts\Data\BoardReader.cs" />
-    <Compile Include="Assets\scripts\Effects.cs" />
+    <Compile Include="Assets\scripts\Effects\EffectsUtilities.cs" />
     <Compile Include="Assets\scripts\MoveSideways.cs" />
     <Compile Include="Assets\scripts\Pieces\IPiece.cs" />
     <Compile Include="Assets\scripts\Pieces\Piece.cs" />
     <Compile Include="Assets\scripts\Player\PlayerCamera.cs" />
     <Compile Include="Assets\scripts\Player\PlayerControl.cs" />
     <Compile Include="Assets\scripts\Player\PlayerMove.cs" />
+    <None Include="Assets\scripts\Effects\EdgeHighlight.shader" />
     <None Include="Assets\Resources\testBoard.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/micky/Documents/GitHub/3DISO/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

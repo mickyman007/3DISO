@@ -9,3 +9,5 @@ Temp/
 *.info
 *.cache
 *.stamp
+*.db
+*.opendb
