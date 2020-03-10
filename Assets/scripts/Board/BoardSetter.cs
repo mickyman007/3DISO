@@ -32,7 +32,7 @@ public class BoardSetter : MonoBehaviour {
 
     private GameObject SetPiece(ISpace space) {
         GameObject pieceGo;
-        pieceGo = Instantiate(GenericPiece, space.GetWorldCoords(), Quaternion.Euler(90, 0, 0)) ;
+        pieceGo = Instantiate(GenericPiece, space.GetWorldCoords(), Quaternion.Euler(0, 0, 0)) ;
         pieceGo.GetComponent<IPiece>().Initialise(space);
         return pieceGo;
     }
