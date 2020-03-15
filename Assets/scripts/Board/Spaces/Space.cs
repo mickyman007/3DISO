@@ -13,7 +13,7 @@ public class Space : MonoBehaviour, ISpace {
 
     public IBoard Board { get; set; }
 
-    public void Initialise(int x, int y) {
+    public virtual void Initialise(int x, int y) {
         this.X = x;
         this.Y = y;
         transform.name = this.GetType().Name + "(" + x + ", " + y + ")";
