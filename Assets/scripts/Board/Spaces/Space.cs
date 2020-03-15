@@ -4,6 +4,9 @@ using UnityEngine;
 public class Space : MonoBehaviour, ISpace {
     private bool isSelected;
 
+    private Renderer renderer;
+    private Material originalMaterial;
+
     public int X { get; private set; }
 
     public int Y { get; private set; }
@@ -39,6 +42,11 @@ public class Space : MonoBehaviour, ISpace {
 
     public event EventHandler OnSelection;
 
+    void Start() {
+        renderer = GetComponent<Renderer>();
+        originalMaterial = new Material(renderer.material);
+    }
+
     public void OnMouseEnter() {
     }
 
@@ -47,12 +55,14 @@ public class Space : MonoBehaviour, ISpace {
 
     private void Select() {
         transform.Expand(1.2f);
+        renderer.material.ToggleOutLine(originalMaterial);
         Debug.Log("Selected" + transform.name);
         OnSelection(this, new EventArgs());
     }
 
     private void Unselect() {
         transform.Shrink(1.2f);
+        renderer.material.ToggleOutLine(originalMaterial);
         Debug.Log("Unselected" + transform.name);
         OnSelection(this, new EventArgs());
     }

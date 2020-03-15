@@ -28,6 +28,8 @@ public class Board : IBoard {
 
     private void OnPieceIsSelectedChanged(object sender, EventArgs e) {
         var senderPeice = (IPiece)sender;
+        this.DeselectSpace();
+
         if (SelectedPiece == senderPeice) {
             this.DeselectPeice();
             return;
@@ -35,7 +37,6 @@ public class Board : IBoard {
 
         this.DeselectPeice();
         this.SelectPeice(senderPeice);
-        this.DeselectSpace();
         this.SelectSpace(SelectedPiece.SpaceOccupied);
     }
 
