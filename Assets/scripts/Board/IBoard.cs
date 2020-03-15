@@ -2,7 +2,15 @@
 
     ISpace[,] Spaces { get; }
 
-    ISpace SelectedSpace { get; }
+    /// <summary>
+    /// The current <see cref="ISpace"/> selection.
+    /// </summary>
+    ISpace SelectedSpace { get; set; }
+
+    /// <summary>
+    /// The current <see cref="IPeice"/> selection.
+    /// </summary>
+    IPiece SelectedPiece { get; set; }
 
     void Set(IPiece piece);
 

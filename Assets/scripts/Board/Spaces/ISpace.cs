@@ -11,6 +11,8 @@ public interface ISpace {
 
     bool CanMoveTo { get; set; }
 
+    IBoard Board { get; set; }
+
     event EventHandler OnSelection;
 
     void Initialise(int x, int y);

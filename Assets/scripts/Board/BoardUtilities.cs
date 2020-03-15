@@ -14,6 +14,50 @@ public static class BoardUtilities {
         return new Vector3(space.X, 0, space.Y);
     }
 
+    /// <summary>
+    /// Sets <paramref name="space"/> IsSelected to true, and adds to <paramref name="board"/> selection.
+    /// </summary>
+    /// <param name="board">The board</param>
+    /// <param name="space"></param>
+    /// <remarks>Opposite of <see cref="DeselectSpace"/>.</remarks>
+    public static void SelectSpace(this IBoard board, ISpace space) {
+        board.SelectedSpace = space;
+        space.IsSelected = true;
+    }
+
+    /// <summary>
+    /// Sets <paramref name="board"/>'s SelectedSpace.IsSelected to false, and removes from board selection.
+    /// </summary>
+    /// /// <remarks>Opposite of <see cref="SelectSpace"/>.</remarks>
+    public static void DeselectSpace(this IBoard board) {
+        if (board.SelectedSpace != null) {
+            board.SelectedSpace.IsSelected = false;
+        }
+        board.SelectedSpace = null;
+    }
+
+    /// <summary>
+    /// Sets <paramref name="space"/> IsSelected to true, and adds to <paramref name="board"/> selection.
+    /// </summary>
+    /// <param name="board">The board</param>
+    /// <param name="space"></param>
+    /// <remarks>Opposite of <see cref="DeselectSpace"/>.</remarks>
+    public static void SelectPeice(this IBoard board, IPiece peice) {
+        board.SelectedPiece = peice;
+        peice.IsSelected = true;
+    }
+
+    /// <summary>
+    /// Sets <paramref name="board"/> SelectedPiece.IsSelected to false, and removes from board selection.
+    /// </summary>
+    /// /// <remarks>Opposite of <see cref="SelectSpace"/>.</remarks>
+    public static void DeselectPeice(this IBoard board) {
+        if (board.SelectedPiece != null) {
+            board.SelectedPiece.IsSelected = false;
+        }
+        board.SelectedPiece = null;
+    }
+
     public static ISpace GetSpaceAtPosition(Vector3 position) {
         Collider[] colliders = Physics.OverlapSphere(position, 1f);
         if (colliders.Length > 1) {

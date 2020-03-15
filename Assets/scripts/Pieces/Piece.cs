@@ -9,7 +9,10 @@ public class Piece : MonoBehaviour, IPiece {
 
     public ISpace SpaceOccupied { 
         get { return space; }
-        set { space = value; }
+        set { 
+            space = value;
+            transform.position = space.GetWorldCoords();
+        }
     }
 
     public bool IsSelected {
@@ -40,13 +43,6 @@ public class Piece : MonoBehaviour, IPiece {
     void Start() {
         renderer = GetComponent<Renderer>();
         originalMaterial = new Material(renderer.material);
-    }
-
-    // Update is called once per frame
-    void Update() {
-        if (space != null) {
-            this.transform.position = space.GetWorldCoords();
-        }
     }
 
     private void Select() {

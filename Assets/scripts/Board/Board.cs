@@ -1,22 +1,21 @@
 ﻿using System;
 
 public class Board : IBoard {
-    private ISpace selectedSpace;
-    private IPiece selectedPiece;
-
     public ISpace[,] Spaces { get; private set; }
 
     public Board(int boardSizeX, int boardSizeY) {
         Spaces = new ISpace[boardSizeX, boardSizeY];
     }
 
-    public ISpace SelectedSpace { 
-        get { return selectedSpace; }
-        set { 
-            selectedSpace.IsSelected = false;
-            selectedSpace = value;
-        }
-    }
+    /// <summary>
+    /// The current <see cref="ISpace"/> selection.
+    /// </summary>
+    public ISpace SelectedSpace { get; set; }
+
+    /// <summary>
+    /// UThe current <see cref="IPeice"/> selection.
+    /// </summary>
+    public IPiece SelectedPiece { get; set; }
 
     public void Set(IPiece piece) {
         piece.OnSelection += PieceSelected;
@@ -28,24 +27,29 @@ public class Board : IBoard {
     }
 
     private void PieceSelected(object sender, EventArgs e) {
-        if(selectedPiece == (IPiece)sender) {
-            selectedPiece = null;
+        var senderPeice = (IPiece)sender;
+        if (SelectedPiece == senderPeice) {
+            this.DeselectPeice();
             return;
         }
 
-        selectedPiece = (IPiece)sender;
-
-        if (selectedSpace != null) {
-            selectedPiece.MoveTo(selectedSpace);
-        }
+        this.DeselectPeice();
+        this.SelectPeice(senderPeice);
+        this.DeselectSpace();
+        this.SelectSpace(SelectedPiece.SpaceOccupied);
     }
 
     private void SpaceSelected(object sender, EventArgs e) {
-        if(selectedSpace != null && selectedSpace != sender) {
-            selectedSpace.IsSelected = false;
+        var senderSpace = (ISpace)sender;
+        if (SelectedSpace == senderSpace) {
+            this.DeselectSpace();
+            return;
         }
-        selectedSpace = (ISpace)sender;
-        selectedPiece?.MoveTo(selectedSpace);
-        var adjacentSpaces = this.GetNeighbouringSpaces(selectedSpace, false);
+
+        this.DeselectSpace();
+        this.SelectSpace(senderSpace);
+
+        SelectedPiece?.MoveTo(SelectedSpace);
+        var adjacentSpaces = this.GetNeighbouringSpaces(SelectedSpace, false);
     }
 }

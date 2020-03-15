@@ -8,6 +8,8 @@ public class Space : MonoBehaviour, ISpace {
 
     public int Y { get; private set; }
 
+    public IBoard Board { get; set; }
+
     public void Initialise(int x, int y) {
         this.X = x;
         this.Y = y;
