@@ -18,15 +18,15 @@ public class Board : IBoard {
     public IPiece SelectedPiece { get; set; }
 
     public void Set(IPiece piece) {
-        piece.OnSelection += PieceSelected;
+        piece.OnSelection += OnPieceIsSelectedChanged;
     }
 
     public void Set(ISpace space) {
         Spaces[space.X, space.Y] = space;
-        space.OnSelection += SpaceSelected;
+        space.OnSelection += OnSpaceIsSelectedChanged;
     }
 
-    private void PieceSelected(object sender, EventArgs e) {
+    private void OnPieceIsSelectedChanged(object sender, EventArgs e) {
         var senderPeice = (IPiece)sender;
         if (SelectedPiece == senderPeice) {
             this.DeselectPeice();
@@ -39,7 +39,7 @@ public class Board : IBoard {
         this.SelectSpace(SelectedPiece.SpaceOccupied);
     }
 
-    private void SpaceSelected(object sender, EventArgs e) {
+    private void OnSpaceIsSelectedChanged(object sender, EventArgs e) {
         var senderSpace = (ISpace)sender;
         if (SelectedSpace == senderSpace) {
             this.DeselectSpace();

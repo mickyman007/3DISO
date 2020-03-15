@@ -54,6 +54,7 @@ public class Space : MonoBehaviour, ISpace {
     private void Unselect() {
         transform.Shrink(1.2f);
         Debug.Log("Unselected" + transform.name);
+        OnSelection(this, new EventArgs());
     }
 
     void OnDrawGizmos() {
