@@ -3,6 +3,7 @@
 
 #### CURRENTLY WORK IN PROGRESS ####
 TODO
+* UNIT TEST (which really should alreay have been done, but I didn't realise how large this project would be...)
 * 'tighten' player controls
 * refactor board + selection
 
