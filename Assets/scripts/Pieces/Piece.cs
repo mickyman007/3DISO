@@ -30,6 +30,8 @@ public class Piece : MonoBehaviour, IPiece {
         }
     }
 
+    public int[,] Movement { get; private set; }
+
     public bool CanMove { get; set; }
 
     public event EventHandler OnSelection;

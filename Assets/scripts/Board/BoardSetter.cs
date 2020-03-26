@@ -9,8 +9,6 @@ public class BoardSetter : MonoBehaviour {
     public int GridSizeY;
     public IBoard Board;
     public GameObject EmptySpace;
-    public GameObject Space;
-    public GameObject Wall;
 
     public GameObject GenericPiece;
 
@@ -49,20 +47,20 @@ public class BoardSetter : MonoBehaviour {
     }
 
     void Start() {
-        boardLayout = BoardReader.GetSpaces("Assets/Resources/testBoard.txt");
+        boardLayout = BoardReader.GetSpaces("Assets/Resources/chessBoard.txt");
 
         GridSizeX = boardLayout.GetLength(0);
         GridSizeY = boardLayout.GetLength(1);
 
         EmptySpace = Resources.Load("prefabs/Spaces/EmptySpace") as GameObject;
-        Space = Resources.Load("prefabs/Spaces/Space") as GameObject;
-        Wall = Resources.Load("prefabs/Spaces/WallSpace") as GameObject;
+        var whiteSpace = Resources.Load("prefabs/Spaces/WhiteSpace") as GameObject;
+        var blackSpace = Resources.Load("prefabs/Spaces/BlackSpace") as GameObject;
 
         GenericPiece = Resources.Load("prefabs/Pieces/Piece") as GameObject;
 
         spaceDictionary = new Dictionary<char, GameObject> {
-            { 'S', Space},
-            { 'W', Wall}
+            { 'W', whiteSpace},
+            { 'B', blackSpace}
         };
 
         SetupBoard();

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 199697559884705633}
   - component: {fileID: 4076391455769373464}
   m_Layer: 0
-  m_Name: Space
+  m_Name: BlakeSpace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cf6e116255eda6e498164e5507894caf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

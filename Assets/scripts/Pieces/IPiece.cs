@@ -7,6 +7,8 @@ public interface IPiece {
 
     bool CanMove { get; set; }
 
+    int[,] Movement { get; }
+
     event EventHandler OnSelection;
 
     void Initialise(ISpace space);
