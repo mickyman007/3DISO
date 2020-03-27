@@ -45,7 +45,7 @@ public class Piece : MonoBehaviour, IPiece {
         SpaceOccupied = space;
         transform.name = "Piece";
         CanMove = true;
-        MovementRules = new BishopMovementRules();
+        MovementRules = new KnightMovementRules();
     }
 
     void Awake() {
