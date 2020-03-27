@@ -13,7 +13,7 @@ public class Board : IBoard {
     public ISpace SelectedSpace { get; set; }
 
     /// <summary>
-    /// UThe current <see cref="IPeice"/> selection.
+    /// UThe current <see cref="IPiece"/> selection.
     /// </summary>
     public IPiece SelectedPiece { get; set; }
 
