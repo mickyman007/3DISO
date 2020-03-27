@@ -45,6 +45,12 @@ public static class BoardUtilities {
     public static void SelectPeice(this IBoard board, IPiece peice) {
         board.SelectedPiece = peice;
         peice.IsSelected = true;
+
+        //highlight legal moves for this piece
+        peice.MoveableSpaces = peice.MovementRules.GetLegalMoves(board, peice);
+        foreach (var moveableSpace in peice.MoveableSpaces) {
+            moveableSpace.IsHighlighted = true;
+        }
     }
 
     /// <summary>

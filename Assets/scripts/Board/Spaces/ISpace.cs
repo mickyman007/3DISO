@@ -7,6 +7,8 @@ public interface ISpace {
 
     bool IsSelected { get; set; }
 
+    bool IsHighlighted { get; set; }
+
     bool CanSelect { get; set; }
 
     bool CanMoveTo { get; set; }

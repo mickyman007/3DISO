@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Space : MonoBehaviour, ISpace {
     private bool isSelected;
+    private bool isHighlighted;
 
     private Renderer renderer;
     private Material originalMaterial;
@@ -12,14 +13,6 @@ public class Space : MonoBehaviour, ISpace {
     public int Y { get; private set; }
 
     public IBoard Board { get; set; }
-
-    public virtual void Initialise(int x, int y) {
-        this.X = x;
-        this.Y = y;
-        transform.name = this.GetType().Name + "(" + x + ", " + y + ")";
-        CanSelect = true;
-        CanMoveTo = true;
-    }
 
     public bool IsSelected {
         get { return isSelected; }
@@ -36,11 +29,29 @@ public class Space : MonoBehaviour, ISpace {
         }
     }
 
+    public bool IsHighlighted {
+        get { return isHighlighted; }
+        set {
+            if (isHighlighted != value) {
+                isHighlighted = value;
+                renderer.material.ToggleOutLine(originalMaterial);
+            }
+            
+        }
+    }
+
     public bool CanSelect { get; set; }
 
     public bool CanMoveTo { get; set; }
 
     public event EventHandler OnSelection;
+    public virtual void Initialise(int x, int y) {
+        this.X = x;
+        this.Y = y;
+        transform.name = this.GetType().Name + "(" + x + ", " + y + ")";
+        CanSelect = true;
+        CanMoveTo = true;
+    }
 
     void Start() {
         renderer = GetComponent<Renderer>();
@@ -69,6 +80,10 @@ public class Space : MonoBehaviour, ISpace {
 
     void OnDrawGizmos() {
         Gizmos.color = isSelected ? Color.green : Color.red;
+
+        if (isHighlighted) {
+            Gizmos.color = Color.blue;
+        }
 
         Gizmos.DrawWireCube(
             new Vector3(X, transform.position.y + 0.5f, Y),

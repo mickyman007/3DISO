@@ -7,7 +7,9 @@ public interface IPiece {
 
     bool CanMove { get; set; }
 
-    int[,] Movement { get; }
+    IMovementRules MovementRules { get; set; }
+
+    ISpace[] MoveableSpaces { get; set; }
 
     event EventHandler OnSelection;
 

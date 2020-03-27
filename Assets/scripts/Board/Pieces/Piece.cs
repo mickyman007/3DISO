@@ -30,7 +30,8 @@ public class Piece : MonoBehaviour, IPiece {
         }
     }
 
-    public int[,] Movement { get; private set; }
+    public IMovementRules MovementRules { get; set; }
+    public ISpace[] MoveableSpaces { get; set; }
 
     public bool CanMove { get; set; }
 
@@ -40,6 +41,7 @@ public class Piece : MonoBehaviour, IPiece {
         SpaceOccupied = space;
         transform.name = "Piece";
         CanMove = true;
+        MovementRules = new BishopMovementRules();
     }
 
     void Start() {
