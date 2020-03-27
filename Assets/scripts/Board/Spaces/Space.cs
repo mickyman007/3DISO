@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Space : MonoBehaviour, ISpace {
     private bool isSelected;
-    private bool isHighlighted;
+    private bool canMoveTo;
 
     private Renderer renderer;
     private Material originalMaterial;
@@ -29,11 +29,11 @@ public class Space : MonoBehaviour, ISpace {
         }
     }
 
-    public bool IsHighlighted {
-        get { return isHighlighted; }
+    public bool CanMoveTo {
+        get { return canMoveTo; }
         set {
-            if (isHighlighted != value) {
-                isHighlighted = value;
+            if (canMoveTo != value) {
+                canMoveTo = value;
                 renderer.material.ToggleOutLine(originalMaterial);
             }
             
@@ -42,18 +42,16 @@ public class Space : MonoBehaviour, ISpace {
 
     public bool CanSelect { get; set; }
 
-    public bool CanMoveTo { get; set; }
-
     public event EventHandler OnSelection;
     public virtual void Initialise(int x, int y) {
         this.X = x;
         this.Y = y;
         transform.name = this.GetType().Name + "(" + x + ", " + y + ")";
         CanSelect = true;
-        CanMoveTo = true;
+        CanMoveTo = false;
     }
 
-    void Start() {
+    void Awake() {
         renderer = GetComponent<Renderer>();
         originalMaterial = new Material(renderer.material);
     }
@@ -81,7 +79,7 @@ public class Space : MonoBehaviour, ISpace {
     void OnDrawGizmos() {
         Gizmos.color = isSelected ? Color.green : Color.red;
 
-        if (isHighlighted) {
+        if (canMoveTo) {
             Gizmos.color = Color.blue;
         }
 

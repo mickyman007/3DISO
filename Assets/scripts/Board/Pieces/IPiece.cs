@@ -13,5 +13,7 @@ public interface IPiece {
 
     event EventHandler OnSelection;
 
+    void RefreshMoveableSpaces(IBoard board);
+
     void Initialise(ISpace space);
 }

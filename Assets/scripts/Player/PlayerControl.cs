@@ -13,7 +13,7 @@ public class PlayerControl : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit, 100.0f)) {
             if (hit.transform.TryGetComponent<ISpace>(out var space)) {
-                if (space.CanSelect) {
+                if (space.CanSelect && space.CanMoveTo) {
                     space.IsSelected = !space.IsSelected;
                     return;
                 }
@@ -21,7 +21,6 @@ public class PlayerControl : MonoBehaviour {
 
             if (hit.transform.TryGetComponent<IPiece>(out var piece)) {
                 piece.IsSelected = !piece.IsSelected;
-                return;
             }
         }
     }

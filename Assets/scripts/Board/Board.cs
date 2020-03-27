@@ -36,7 +36,7 @@ public class Board : IBoard {
         }
 
         this.DeselectPeice();
-        this.SelectPeice(senderPeice);
+        this.SelectPiece(senderPeice);
         this.SelectSpace(SelectedPiece.SpaceOccupied);
     }
 
@@ -50,7 +50,10 @@ public class Board : IBoard {
         this.DeselectSpace();
         this.SelectSpace(senderSpace);
 
-        SelectedPiece?.MoveTo(SelectedSpace);
-        var adjacentSpaces = this.GetNeighbouringSpaces(SelectedSpace, false);
+        if (SelectedPiece != null) {
+            SelectedPiece.MoveTo(SelectedSpace);
+            SelectedPiece.RefreshMoveableSpaces(this);
+            SelectedPiece.MoveableSpaces.ToggleCanMoveOnSpaces();
+        }
     }
 }

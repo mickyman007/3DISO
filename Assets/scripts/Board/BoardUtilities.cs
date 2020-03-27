@@ -39,18 +39,15 @@ public static class BoardUtilities {
     /// <summary>
     /// Sets <paramref name="space"/> IsSelected to true, and adds to <paramref name="board"/> selection.
     /// </summary>
-    /// <param name="board">The board</param>
-    /// <param name="space"></param>
+    /// <param name="board">The board.</param>
+    /// <param name="piece">The piece to select.</param>
     /// <remarks>Opposite of <see cref="DeselectSpace"/>.</remarks>
-    public static void SelectPeice(this IBoard board, IPiece peice) {
-        board.SelectedPiece = peice;
-        peice.IsSelected = true;
+    public static void SelectPiece(this IBoard board, IPiece piece) {
+        board.SelectedPiece = piece;
+        piece.IsSelected = true;
 
-        //highlight legal moves for this piece
-        peice.MoveableSpaces = peice.MovementRules.GetLegalMoves(board, peice);
-        foreach (var moveableSpace in peice.MoveableSpaces) {
-            moveableSpace.IsHighlighted = true;
-        }
+        piece.MoveableSpaces = piece.MovementRules.GetLegalMoves(board, piece);
+        piece.MoveableSpaces.ToggleCanMoveOnSpaces();
     }
 
     /// <summary>
@@ -58,10 +55,23 @@ public static class BoardUtilities {
     /// </summary>
     /// /// <remarks>Opposite of <see cref="SelectSpace"/>.</remarks>
     public static void DeselectPeice(this IBoard board) {
-        if (board.SelectedPiece != null) {
-            board.SelectedPiece.IsSelected = false;
+        var piece = board.SelectedPiece;
+
+        if (piece != null) {
+            piece.IsSelected = false;
+            piece.MoveableSpaces.ToggleCanMoveOnSpaces();
         }
         board.SelectedPiece = null;
+    }
+
+    /// <summary>
+    /// Toggles the CanMoveTo property on an array of spaces.
+    /// </summary>
+    /// <param name="spaces">The array of spaces to toggle highlight.</param>
+    public static void ToggleCanMoveOnSpaces(this ISpace[] spaces) {
+        foreach (var space in spaces) {
+            space.CanMoveTo = !space.CanMoveTo;
+        }
     }
 
     public static ISpace GetSpaceAtPosition(Vector3 position) {
@@ -78,6 +88,7 @@ public static class BoardUtilities {
 
     public static bool MoveTo(this IPiece piece, ISpace destination) {
         if(piece.CanMove && destination.CanMoveTo) {
+            piece.MoveableSpaces.ToggleCanMoveOnSpaces();
             piece.SpaceOccupied = destination;
             return true;
         }

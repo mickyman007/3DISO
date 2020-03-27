@@ -37,6 +37,10 @@ public class Piece : MonoBehaviour, IPiece {
 
     public event EventHandler OnSelection;
 
+    public void RefreshMoveableSpaces(IBoard board) {
+        MoveableSpaces = MovementRules.GetLegalMoves(board, this);
+    }
+
     public void Initialise(ISpace space) {
         SpaceOccupied = space;
         transform.name = "Piece";
@@ -44,7 +48,7 @@ public class Piece : MonoBehaviour, IPiece {
         MovementRules = new BishopMovementRules();
     }
 
-    void Start() {
+    void Awake() {
         renderer = GetComponent<Renderer>();
         originalMaterial = new Material(renderer.material);
     }
