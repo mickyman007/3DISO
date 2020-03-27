@@ -84,7 +84,6 @@
     <None Include="Assets\Resources\chessBoard.txt" />
     <None Include="Assets\scripts\Effects\EdgeHighlight.shader" />
     <None Include="Assets\Resources\testBoard.txt" />
-    <None Include="Assets\Resources\Resources\testBoard.txt" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/micky/Documents/GitHub/3DISO/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
