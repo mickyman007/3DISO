@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class BoardSetter : MonoBehaviour {
 
     private char[,] boardLayout;
-    private char[,] pieceLayout;
+    private string[,] pieceLayout;
 
     private int gridSizeX;
     private int gridSizeY;
@@ -14,7 +14,7 @@ public class BoardSetter : MonoBehaviour {
     private GameObject emptySpace;
 
     private Dictionary<char, GameObject> spaceDictionary;
-    private Dictionary<char, GameObject> pieceDictionary;
+    private Dictionary<string, GameObject> pieceDictionary;
 
     private void SetupBoard() {
         board = new Board(gridSizeX, gridSizeY);
@@ -61,7 +61,7 @@ public class BoardSetter : MonoBehaviour {
 
     void Start() {
         boardLayout = BoardReader.GetSymbols("Assets/Resources/chessBoard.txt");
-        pieceLayout = BoardReader.GetSymbols("Assets/Resources/testPieces.txt");
+        pieceLayout = BoardReader.GetSymbols("Assets/Resources/testPieces.txt", ',');
 
         gridSizeX = boardLayout.GetLength(0);
         gridSizeY = boardLayout.GetLength(1);
@@ -77,8 +77,9 @@ public class BoardSetter : MonoBehaviour {
             { 'B', blackSpace}
         };
 
-        pieceDictionary = new Dictionary<char, GameObject> {
-            { 'P', pawnPiece}
+        pieceDictionary = new Dictionary<string, GameObject> {
+            { "WP", pawnPiece},
+            { "BP", pawnPiece}
         };
 
         SetupBoard();

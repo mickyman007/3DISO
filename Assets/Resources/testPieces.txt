@@ -1,8 +1,7 @@
-RKBQKBKR
-P--P---P
---------
---------
---------
---------
---P----P
-RKBQKBKR
+x,x,x,x,x,x,x,x
+x,x,BP,BP,x,x,BP
+x,x,x,x,x,x,x,x
+x,x,x,x,x,x,x,x
+x,WP,x,x,x,WP,x,x
+x,x,x,x,x,x,x,x
+x,x,x,x,x,x,x,x
