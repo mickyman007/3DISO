@@ -71,6 +71,7 @@ public class BoardSetter : MonoBehaviour {
         var blackSpace = Resources.Load("prefabs/Spaces/BlackSpace") as GameObject;
 
         var pawnPiece = Resources.Load("prefabs/Pieces/Pawn") as GameObject;
+        var bishopPiece = Resources.Load("prefabs/Pieces/Bishop") as GameObject;
 
         spaceDictionary = new Dictionary<char, GameObject> {
             { 'W', whiteSpace},
@@ -79,7 +80,9 @@ public class BoardSetter : MonoBehaviour {
 
         pieceDictionary = new Dictionary<string, GameObject> {
             { "WP", pawnPiece},
-            { "BP", pawnPiece}
+            { "BP", pawnPiece},
+            { "WB", bishopPiece },
+            { "BB", bishopPiece }
         };
 
         SetupBoard();

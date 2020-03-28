@@ -72,6 +72,7 @@
     <Compile Include="Assets\scripts\Board\Movement\KnightMovementRules.cs" />
     <Compile Include="Assets\scripts\Board\Movement\PawnMovementRules.cs" />
     <Compile Include="Assets\scripts\Board\Movement\QueenMovementRules.cs" />
+    <Compile Include="Assets\scripts\Board\Pieces\BishopPiece.cs" />
     <Compile Include="Assets\scripts\Board\Pieces\IPiece.cs" />
     <Compile Include="Assets\scripts\Board\Pieces\PawnPiece.cs" />
     <Compile Include="Assets\scripts\Board\Pieces\Piece.cs" />

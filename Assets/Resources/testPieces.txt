@@ -1,7 +1,7 @@
-x,x,x,x,x,x,x,x
+x,x,BB,x,x,x,x,x
 x,x,BP,BP,x,x,BP
 x,x,x,x,x,x,x,x
 x,x,x,x,x,x,x,x
 x,WP,x,x,x,WP,x,x
 x,x,x,x,x,x,x,x
-x,x,x,x,x,x,x,x
+x,x,x,x,WB,x,x,x
