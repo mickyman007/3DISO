@@ -6,6 +6,7 @@ public class BishopMovementRules : IMovementRules {
         var pieceSpace = piece.SpaceOccupied;
         var spaces = new List<ISpace>();
 
+        // TODO try not to loop through EVERY space on the board
         foreach (var boardSpace in board.Spaces) {
             var x = boardSpace.X - pieceSpace.X;
             var y = boardSpace.Y - pieceSpace.Y;

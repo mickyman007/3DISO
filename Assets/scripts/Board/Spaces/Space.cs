@@ -43,6 +43,7 @@ public class Space : MonoBehaviour, ISpace {
     public bool CanSelect { get; set; }
 
     public event EventHandler OnSelection;
+
     public virtual void Initialise(int x, int y) {
         this.X = x;
         this.Y = y;

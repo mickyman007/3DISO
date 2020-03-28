@@ -3,7 +3,7 @@
 /// Static class for reading in board data in from file.
 /// </summary>
 public static class BoardReader {
-    public static char[,] GetSpaces(string filePath) {
+    public static char[,] GetSymbols(string filePath) {
 
         var lines = File.ReadAllLines(filePath);
         var rows = lines.Length;
@@ -15,7 +15,7 @@ public static class BoardReader {
 
         var spaces = new char[rows, cols];
 
-        for (int x = 0; x < rows; x++) {
+        for (var x = 0; x < rows; x++) {
             var line = new char[cols];
             lines[x].ToCharArray().CopyTo(line, 0);
             for (int y = 0; y < cols; y++) {

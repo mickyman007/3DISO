@@ -151,17 +151,17 @@ PrefabInstance:
     - target: {fileID: 4427122517502564110, guid: 4d441d06a5927fd41baafb31a1fe0eeb,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4427122517502564110, guid: 4d441d06a5927fd41baafb31a1fe0eeb,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4427122517502564110, guid: 4d441d06a5927fd41baafb31a1fe0eeb,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4427122517502564110, guid: 4d441d06a5927fd41baafb31a1fe0eeb,
         type: 3}
@@ -224,12 +224,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6833468463f96d4aa5ecb36e55e96ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridSizeX: 0
-  GridSizeY: 0
-  EmptySpace: {fileID: 0}
-  Space: {fileID: 0}
-  Wall: {fileID: 0}
-  GenericPiece: {fileID: 0}
 --- !u!4 &1055409872
 Transform:
   m_ObjectHideFlags: 0

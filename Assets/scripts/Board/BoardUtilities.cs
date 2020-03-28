@@ -11,7 +11,7 @@ public static class BoardUtilities {
     }
 
     public static Vector3 GetWorldCoords(this ISpace space) {
-        return new Vector3(space.X, 0, space.Y);
+        return new Vector3(space.X, 1, space.Y);
     }
 
     /// <summary>
@@ -111,17 +111,36 @@ public static class BoardUtilities {
         return neighbours;
     }
 
+    public static bool IsInBounds(this IBoard board, int x, int y) {
+        return x <= board.Spaces.GetLength(0) - 1 && x >= 0 && y <= board.Spaces.GetLength(1) - 1 && y >= 0;
+    }
+
+    public static int[] GetDirectionFromRotation(this Rotation rotation) {
+        switch (rotation) {
+            case Rotation.North:
+                return new[] { 1, 0 };
+            case Rotation.East:
+                return new[] { 0, 1 };
+            case Rotation.South:
+                return new[] { -1, 0 };
+            case Rotation.West:
+                return new[] { 0, -1 };
+        }
+
+        return new[] { 0, 0 };
+    }
+
     private static ISpace[] GetAdjacentSpaces(IBoard board, ISpace targetSpace) {
         var spaces = new ISpace[4];
 
         int index = 0;
         for(int i = -1; i < 2; i++) {
             if (i != 0) {
-                if(IsInBounds(targetSpace.X + i, targetSpace.Y, board)) {
+                if(board.IsInBounds(targetSpace.X + i, targetSpace.Y)) {
                     spaces[index] = board.Spaces[targetSpace.X + i, targetSpace.Y];
                 }
 
-                if(IsInBounds(targetSpace.X, targetSpace.Y + i, board)) {
+                if(board.IsInBounds(targetSpace.X, targetSpace.Y + i)) {
                     spaces[index + 1] = board.Spaces[targetSpace.X, targetSpace.Y + i];
                 }
 
@@ -140,7 +159,7 @@ public static class BoardUtilities {
             if (x != targetSpace.X) {
                 for(int y = -1; y < 2; y++) {
                     if(y != targetSpace.Y) {
-                        if(IsInBounds(x, y, board)) {
+                        if(board.IsInBounds(x, y)) {
                             spaces[index] = board.Spaces[x, y];
                         }
                         index++;
@@ -150,9 +169,5 @@ public static class BoardUtilities {
         }
 
         return spaces;
-    }
-
-    private static bool IsInBounds(int x, int y, IBoard board) {
-        return x <= board.Spaces.GetLength(0)-1 && x >= 0 && y <= board.Spaces.GetLength(1)-1 && y >= 0;
     }
 }

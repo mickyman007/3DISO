@@ -7,6 +7,8 @@ public interface IPiece {
 
     bool CanMove { get; set; }
 
+    Rotation Rotation { get; set; }
+
     IMovementRules MovementRules { get; set; }
 
     ISpace[] MoveableSpaces { get; set; }
