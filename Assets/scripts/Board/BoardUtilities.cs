@@ -47,7 +47,7 @@ public static class BoardUtilities {
         piece.IsSelected = true;
 
         piece.MoveableSpaces = piece.MovementRules.GetLegalMoves(board, piece);
-        piece.MoveableSpaces.ToggleCanMoveOnSpaces();
+        piece.MoveableSpaces.SetCanMoveOnSpaces(true);
     }
 
     /// <summary>
@@ -59,18 +59,14 @@ public static class BoardUtilities {
 
         if (piece != null) {
             piece.IsSelected = false;
-            piece.MoveableSpaces.ToggleCanMoveOnSpaces();
+            piece.MoveableSpaces.SetCanMoveOnSpaces(false);
         }
         board.SelectedPiece = null;
     }
 
-    /// <summary>
-    /// Toggles the CanMoveTo property on an array of spaces.
-    /// </summary>
-    /// <param name="spaces">The array of spaces to toggle highlight.</param>
-    public static void ToggleCanMoveOnSpaces(this ISpace[] spaces) {
+    public static void SetCanMoveOnSpaces(this ISpace[] spaces, bool canMove) {
         foreach (var space in spaces) {
-            space.CanMoveTo = !space.CanMoveTo;
+            space.CanMoveTo = canMove;
         }
     }
 
@@ -88,7 +84,7 @@ public static class BoardUtilities {
 
     public static bool MoveTo(this IPiece piece, ISpace destination) {
         if(piece.CanMove && destination.CanMoveTo) {
-            piece.MoveableSpaces.ToggleCanMoveOnSpaces();
+            piece.MoveableSpaces.SetCanMoveOnSpaces(false);
             piece.SpaceOccupied = destination;
             return true;
         }

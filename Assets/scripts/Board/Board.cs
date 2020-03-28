@@ -53,7 +53,7 @@ public class Board : IBoard {
         if (SelectedPiece != null) {
             SelectedPiece.MoveTo(SelectedSpace);
             SelectedPiece.RefreshMoveableSpaces(this);
-            SelectedPiece.MoveableSpaces.ToggleCanMoveOnSpaces();
+            SelectedPiece.MoveableSpaces.SetCanMoveOnSpaces(true);
         }
     }
 }

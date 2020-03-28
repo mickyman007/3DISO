@@ -67,14 +67,12 @@ public class Space : MonoBehaviour, ISpace {
 
     private void Select() {
         transform.Expand(1.2f);
-        renderer.material.ToggleOutLine(originalMaterial);
         Debug.Log("Selected" + transform.name);
         OnSelection(this, new EventArgs());
     }
 
     private void Unselect() {
         transform.Shrink(1.2f);
-        renderer.material.ToggleOutLine(originalMaterial);
         Debug.Log("Unselected" + transform.name);
         OnSelection(this, new EventArgs());
     }
