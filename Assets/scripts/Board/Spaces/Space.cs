@@ -32,11 +32,13 @@ public class Space : MonoBehaviour, ISpace {
     public bool CanMoveTo {
         get { return canMoveTo; }
         set {
-            if (canMoveTo != value) {
-                canMoveTo = value;
-                renderer.material.ToggleOutLine(originalMaterial);
+            canMoveTo = value;
+
+            if (canMoveTo) {
+                renderer.material.AddOutLine();
+            } else {
+                renderer.material.RemoveOutLine(originalMaterial);
             }
-            
         }
     }
 

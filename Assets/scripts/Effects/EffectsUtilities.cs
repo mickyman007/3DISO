@@ -25,4 +25,18 @@ public static class EffectsUtilities {
         material.SetFloat("Outline", 0.5f);
         material.SetTexture("_MainTex", tex);
     }
+
+    public static void AddOutLine(this Material material) {
+        var tex = material.mainTexture;
+        material.shader = Shader.Find(outlineShader);
+        material.SetColor("_Color", new Color(255, 255, 255, 160));
+        material.SetColor("_OutlineColor", new Color(255, 255, 0));
+        material.SetFloat("Outline", 0.5f);
+        material.SetTexture("_MainTex", tex);
+    }
+
+    public static void RemoveOutLine(this Material material, Material originalMaterial) {
+        material.CopyPropertiesFromMaterial(originalMaterial);
+        material.shader = originalMaterial.shader;
+    }
 }
