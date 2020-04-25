@@ -5,7 +5,6 @@ Temp/
 *.ide
 *.ide-shm
 *.ide-wal
-*.meta
 *.info
 *.cache
 *.stamp
