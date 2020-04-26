@@ -1,11 +1,20 @@
 ﻿using System;
 
 public class Board : IBoard {
-    public ISpace[,] Spaces { get; private set; }
 
+    /// <summary>
+    /// Constructor for the board.
+    /// </summary>
+    /// <param name="boardSizeX">The board height.</param>
+    /// <param name="boardSizeY">The board width.</param>
     public Board(int boardSizeX, int boardSizeY) {
         Spaces = new ISpace[boardSizeX, boardSizeY];
     }
+
+    /// <summary>
+    /// Coordinates of spaces on board.
+    /// </summary>
+    public ISpace[,] Spaces { get; }
 
     /// <summary>
     /// The current <see cref="ISpace"/> selection.
@@ -13,14 +22,22 @@ public class Board : IBoard {
     public ISpace SelectedSpace { get; set; }
 
     /// <summary>
-    /// UThe current <see cref="IPiece"/> selection.
+    /// The current <see cref="IPeice"/> selection.
     /// </summary>
     public IPiece SelectedPiece { get; set; }
 
+    /// <summary>
+    /// Places the peice on the board.
+    /// </summary>
+    /// <param name="piece"></param>
     public void Set(IPiece piece) {
         piece.OnSelection += OnPieceIsSelectedChanged;
     }
 
+    /// <summary>
+    /// Places the space on the board.
+    /// </summary>
+    /// <param name="space"></param>
     public void Set(ISpace space) {
         Spaces[space.X, space.Y] = space;
         space.OnSelection += OnSpaceIsSelectedChanged;

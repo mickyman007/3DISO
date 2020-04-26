@@ -1,5 +1,11 @@
-﻿public interface IBoard {
+﻿/// <summary>
+/// Interface for a board.
+/// </summary>
+public interface IBoard {
 
+    /// <summary>
+    /// Coordinates of spaces on board.
+    /// </summary>
     ISpace[,] Spaces { get; }
 
     /// <summary>
@@ -12,7 +18,15 @@
     /// </summary>
     IPiece SelectedPiece { get; set; }
 
+    /// <summary>
+    /// Places the peice on the board.
+    /// </summary>
+    /// <param name="piece"></param>
     void Set(IPiece piece);
 
+    /// <summary>
+    /// Places the space on the board.
+    /// </summary>
+    /// <param name="space"></param>
     void Set(ISpace space);
 }
