@@ -9,12 +9,18 @@ public class Board : IBoard {
     /// <param name="boardSizeY">The board width.</param>
     public Board(int boardSizeX, int boardSizeY) {
         Spaces = new ISpace[boardSizeX, boardSizeY];
+        Pieces = new IPiece[boardSizeX, boardSizeY];
     }
 
     /// <summary>
     /// Coordinates of spaces on board.
     /// </summary>
     public ISpace[,] Spaces { get; }
+
+    /// <summary>
+    /// Coordinates of spaces on board.
+    /// </summary>
+    public IPiece[,] Pieces { get; }
 
     /// <summary>
     /// The current <see cref="ISpace"/> selection.
@@ -31,6 +37,7 @@ public class Board : IBoard {
     /// </summary>
     /// <param name="piece"></param>
     public void Set(IPiece piece) {
+        Pieces[piece.SpaceOccupied.X, piece.SpaceOccupied.Y] = piece;
         piece.OnSelection += OnPieceIsSelectedChanged;
     }
 
@@ -68,7 +75,9 @@ public class Board : IBoard {
         this.SelectSpace(senderSpace);
 
         if (SelectedPiece != null) {
+            Pieces[SelectedPiece.SpaceOccupied.X, SelectedPiece.SpaceOccupied.Y] = null;
             SelectedPiece.MoveTo(SelectedSpace);
+            Pieces[SelectedSpace.X, SelectedSpace.Y] = SelectedPiece;
             SelectedPiece.RefreshMoveableSpaces(this);
             SelectedPiece.MoveableSpaces.SetCanMoveOnSpaces(true);
         }

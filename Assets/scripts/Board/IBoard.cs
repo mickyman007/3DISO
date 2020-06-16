@@ -9,6 +9,11 @@ public interface IBoard {
     ISpace[,] Spaces { get; }
 
     /// <summary>
+    /// Coordinates of pieces on board.
+    /// </summary>
+    IPiece[,] Pieces { get; }
+
+    /// <summary>
     /// The current <see cref="ISpace"/> selection.
     /// </summary>
     ISpace SelectedSpace { get; set; }
