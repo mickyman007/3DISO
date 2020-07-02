@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class ChessBoardSetter : MonoBehaviour, IBoardSetter {
@@ -54,15 +55,19 @@ public class ChessBoardSetter : MonoBehaviour, IBoardSetter {
             pieceGo = Instantiate(peice, space.GetWorldCoords(),
                 Quaternion.Euler(0, 0, 0));
             var piece = pieceGo.GetComponent<IPiece>();
-            piece.Initialise(space);
-            piece.MoveableSpaces = piece.MovementRules.GetLegalMoves(Board, piece);
+            
             if(pieceLayout[space.X, space.Y].StartsWith("W")) {
+                piece.Team = "W";
                 piece.Rotation = Rotation.South;
             } else {
+                piece.Team = "B";
                 piece.Rotation = Rotation.North;
             }
-        } catch {
-            Debug.Log("Error setting piece at " + space.X + ", " + space.Y);
+
+            piece.Initialise(space);
+            //piece.MoveableSpaces = piece.MovementRules.GetLegalMoves(Board, piece);
+        } catch (Exception e) {
+            Debug.LogError("Error setting piece at " + space.X + ", " + space.Y);
         }
 
         return pieceGo;

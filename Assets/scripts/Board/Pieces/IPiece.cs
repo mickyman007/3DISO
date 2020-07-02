@@ -11,6 +11,8 @@ public interface IPiece {
 
     IMovementRules MovementRules { get; set; }
 
+    string Team { get; set; }
+
     ISpace[] MoveableSpaces { get; set; }
 
     event EventHandler OnSelection;

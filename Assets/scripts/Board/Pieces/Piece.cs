@@ -4,6 +4,7 @@ using UnityEngine;
 public class Piece : MonoBehaviour, IPiece {
     private ISpace space;
     private bool isSelected;
+    private string team = "";
     private Renderer renderer;
     private Material originalMaterial;
     private Rotation rotation;
@@ -32,6 +33,12 @@ public class Piece : MonoBehaviour, IPiece {
     }
 
     public IMovementRules MovementRules { get; set; }
+
+    public string Team {
+        get => team;
+        set => team = value;
+    }
+
     public ISpace[] MoveableSpaces { get; set; }
 
     public bool CanMove { get; set; }
@@ -64,7 +71,7 @@ public class Piece : MonoBehaviour, IPiece {
 
     private void Select() {
         renderer.material.ToggleOutLine(originalMaterial);
-        Debug.Log("Selected" + transform.name);
+        Debug.Log("Selected " + transform.name);
         OnSelection(this, new EventArgs());
     }
 
