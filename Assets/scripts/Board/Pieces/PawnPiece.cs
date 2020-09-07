@@ -4,5 +4,7 @@
         transform.name = "Piece";
         CanMove = true;
         MovementRules = new PawnMovementRules();
+
+        (MovementRules as PawnMovementRules).IsFirstMove = false;
     }
 }

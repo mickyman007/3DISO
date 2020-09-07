@@ -5,7 +5,7 @@ public class Piece : MonoBehaviour, IPiece {
     private ISpace space;
     private bool isSelected;
     private string team = "";
-    private Renderer renderer;
+    private new Renderer renderer;
     private Material originalMaterial;
     private Rotation rotation;
 
